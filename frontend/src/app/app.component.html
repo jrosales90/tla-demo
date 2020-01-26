@@ -1,0 +1,56 @@
+
+
+<div class="container task-list" role="main">
+
+  <div class="row">
+
+  
+    
+    <h1 class="text-center">TO DO LIST APP</h1>
+
+
+    <div class="col-md-12">
+      <form [formGroup]="taskForm" class="form-inline">
+        <div class="form-group mb-2">
+          <input class="form-control" name="mText" type="text" formControlName="text">
+
+          <button class="btn btn-primary" [disabled]="taskForm.invalid" (click)="saveTask()">
+            Guardar
+          </button>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-12 mt-3">
+      <select name="filterSelect" class="custom-select" (change)="filterTasks($event.target.value)">
+        <option disabled>Selecciona</option>
+        <option value="done">Realizadas</option>
+        <option value="to_do">Por hacer</option>
+        <option value="all">Todas</option>
+      </select><br>
+    </div>
+
+    <div class="col-md-12 task" *ngFor="let task of tasks">
+
+      <div class="col-md-6">
+        {{ task.text }}
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-primary" (click)="taskDone(task._id)" *ngIf="task.status === 'to_do'">
+          Echo
+        </button>
+        <button class="btn btn-warning" (click)="taskToDo(task._id)" *ngIf="task.status === 'done'">
+          Por hacer
+        </button>
+        <button class="btn btn-danger" (click)="deleteTask(task._id)" >Eliminar</button>
+      <div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>

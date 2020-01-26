@@ -7,11 +7,9 @@ WORKDIR /opt/app
 COPY package.json .
 
 RUN npm install --quiet
-#RUN npm install mongodb --save
 RUN npm install nodemon -g --quiet
+RUN npm install -g @angular/cli
 
 COPY . .
-
-EXPOSE 4001
 
 CMD nodemon -L --watch . app.js

@@ -10,14 +10,20 @@ const ACCEPTED = 202;
 
 module.exports = (app) => {
  
-    app.get(API_URL, async (_, res) => {
-        let tasks = await Task.find();
+    app.get(API_URL, async (req, res) => {
+
+        var mFilter = {};
+        if (typeof req.query.filter !== 'undefined' && req.query.filter !== 'all') {
+            mFilter = {"status": req.query.filter};
+        }
+
+        let tasks = await Task.find(mFilter);
         return res.status(OK).send(tasks);
     });
 
     app.post(API_URL, async (req, res) => {
         try {
-            let task = await Task.create(req.query);
+            let task = await Task.create(req.body);
             return res.status(CREATED).send({
                 error: false,
                 task
@@ -34,7 +40,7 @@ module.exports = (app) => {
 
         const { id } = req.params;
 
-        var data = req.query;
+        var data = req.body;
         data.updated = Date.now();
 
         try {

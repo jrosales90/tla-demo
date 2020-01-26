@@ -9,6 +9,7 @@ services:
       PORT: 4001
     ports: 
       - "4001:4001"
+      - "4200:4200"
     volumes:
       - .:/opt/app
       - /opt/app/node_modules #not rewrite
