@@ -1,4 +1,6 @@
-# tla-monadic
+# To do list
+
+## Mongo, Angular, Node, Express, Docker
 
 ## Proceso de instalación
 
