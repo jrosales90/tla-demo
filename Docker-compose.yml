@@ -5,7 +5,7 @@ services:
     container_name: "j-tla-monadic"
     build: .
     environment:
-      MONGO_URL: "mongodb+srv://jrosales:NsEqQEViYXYVUa5k@tla-db-kjvdd.mongodb.net/test?retryWrites=true&w=majority"
+      MONGO_URL: "MONGO_ATLAS_URL"
       MONGO_DBNAME: "TLA-DB"
       PORT: 4001
     ports: 
